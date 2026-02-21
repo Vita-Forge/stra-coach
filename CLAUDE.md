@@ -51,10 +51,20 @@ npm run build    # Build produzione
 npm run lint     # ESLint
 ```
 
-## Workflow
+## Stato attuale
 
-- Branch `main` = produzione (auto-deploy Vercel)
+- Il progetto è 100% frontend statico (nessun file usa process.env)
+- Il file .env.local contiene solo placeholder — le chiavi API (Clerk, Resend, Neon, Gemini) NON sono ancora configurate
+- `npm run dev` e `npm run build` funzionano senza chiavi
+- Le chiavi serviranno quando si implementerà il backend (auth, DB, email, AI)
+
+## Workflow team
+
+- Progetto in team: due sviluppatori con Claude Code, stessa codebase
+- Prima di ogni task: `git pull origin main`
 - Lavorare sempre su feature branch (`feature/nome-feature`)
-- PR per merge su main
+- Mai lavorare direttamente su `main`
+- PR per merge su main con `gh pr create`
 - Build deve passare (0 errori TS) prima di merge
 - Non committare mai file .env
+- Deploy: auto su Vercel quando si mergia su main
